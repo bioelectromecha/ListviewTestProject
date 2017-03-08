@@ -43,15 +43,14 @@ public class WidgetProvider extends AppWidgetProvider {
         LogUtils.d("updateWidgetListView");
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(),R.layout.widget_layout);
         //RemoteViews Service needed to provide adapter for ListView
-
-        Intent svcIntent = new Intent(context, WidgetService.class); /* this is where the service gets called */
+        Intent serviceIntent = new Intent(context, WidgetService.class); /* this is where the service gets called */
         //passing app widget id to that RemoteViews Service
-        svcIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+        serviceIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         //setting a unique Uri to the intent
         //don't know its purpose to me right now
-        svcIntent.setData(Uri.parse(svcIntent.toUri(Intent.URI_INTENT_SCHEME)));
+        serviceIntent.setData(Uri.parse(serviceIntent.toUri(Intent.URI_INTENT_SCHEME)));
         //setting adapter to listview of the widget
-        remoteViews.setRemoteAdapter( R.id.listViewWidget, svcIntent);
+        remoteViews.setRemoteAdapter( R.id.listViewWidget, serviceIntent);
         //setting an empty view in case of no data
         remoteViews.setEmptyView(R.id.listViewWidget, R.id.empty_view);
         return remoteViews;

@@ -25,7 +25,7 @@ public class WidgetRemoteFactory implements RemoteViewsService.RemoteViewsFactor
     private int mAppWidgetId;
 
     public WidgetRemoteFactory(Context context, Intent intent) {
-        LogUtils.d(this.getClass().getName());
+        LogUtils.d("WidgetRemoteFactory");
 
         this.mContext = context;
         mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
@@ -79,6 +79,7 @@ public class WidgetRemoteFactory implements RemoteViewsService.RemoteViewsFactor
     */
     @Override
     public RemoteViews getViewAt(int position) {
+        LogUtils.d("getViewAt");
         final RemoteViews remoteView = new RemoteViews(mContext.getPackageName(), R.layout.list_item_recipe);
         remoteView.setTextViewText(R.id.recipe_list_title, mlistItemList.get(position).getName());
 
