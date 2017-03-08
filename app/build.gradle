@@ -26,4 +26,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.1'
     testCompile 'junit:junit:4.12'
+    //LogUtils
+    compile 'com.apkfuns.logutils:library:1.2.2'
 }

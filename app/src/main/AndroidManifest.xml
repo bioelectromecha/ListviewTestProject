@@ -16,9 +16,12 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name=".WidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
         <receiver android:name=".WidgetProvider" >
             <intent-filter>
-
                 <!-- This widget provider receives broadcast with following action
     name or simply onUpdate of AppWidgetProvider is called -->
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

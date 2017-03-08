@@ -10,33 +10,31 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
+import com.apkfuns.logutils.LogUtils;
+
 import java.util.ArrayList;
 
 /**
  * If you are familiar with Adapter of ListView,this is the same as adapter
  * with few changes
  */
-public class WidgetFactory implements RemoteViewsService.RemoteViewsFactory {
+public class WidgetRemoteFactory implements RemoteViewsService.RemoteViewsFactory {
 
     private ArrayList<Recipe> mlistItemList;
     private Context mContext;
     private int mAppWidgetId;
 
-    public WidgetFactory(Context context, Intent intent) {
+    public WidgetRemoteFactory(Context context, Intent intent) {
+        LogUtils.d(this.getClass().getName());
+
         this.mContext = context;
         mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
                 AppWidgetManager.INVALID_APPWIDGET_ID);
         mlistItemList = Data.getRecipes();
-
     }
 
     @Override
     public void onCreate() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
